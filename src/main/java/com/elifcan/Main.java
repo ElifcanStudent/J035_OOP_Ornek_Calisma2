@@ -66,9 +66,10 @@ public class Main {
         kiralamalar[1] = kiralama2;
         kiralamalar[2] = kiralama3;
         System.out.println("--------------------------------------------------");
-        for (int i = 0; i < kiralamalar.length; i++) {
-            System.out.println(kiralamalar[i]);
-        }
+
+        kiralamaRepository.listele();
+
+        
         System.out.println("--------------------------------------------------");
 
         System.out.println(uye1.getAd() + " adli uye " + kitap.getAd() + " adli kitabi " + kiralama1.getKiralamaTarihi() + " tarihinde kiraladi.");
