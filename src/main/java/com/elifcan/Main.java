@@ -2,6 +2,7 @@ package com.elifcan;
 
 
 import com.elifcan.entity.*;
+import com.elifcan.repository.KiralamaRepository;
 import com.elifcan.utility.Cinsiyet;
 import com.elifcan.utility.KiralamaSuresi;
 import com.elifcan.utility.KitapDurumu;
@@ -45,7 +46,9 @@ public class Main {
         yayin_Evi.setYazarlar(new Yazar [] {yazar});
 
         Uye uye1 = new Uye("Elif","Can", "Ankara", Cinsiyet.KADIN,"0555 555 55 55", UyelikKategorisi.STANDART);
-        Kiralama kiralama =new Kiralama(uye1, kitap, "22.11.2024", KiralamaSuresi.DOKUZ,"1.12.2024");
+        Kiralama kiralama1 =new Kiralama(uye1, kitap, "22.11.2024", KiralamaSuresi.DOKUZ,"1.12.2024");
+        Kiralama kiralama2 =new Kiralama(uye1, kitap1, "22.05.2024", KiralamaSuresi.UC,"25.05.2024");
+        Kiralama kiralama3 =new Kiralama(uye1, kitap, "01.02.2024", KiralamaSuresi.BES,"06.02.2024");
 
 
         System.out.println("Yazar Adi : " + yazar.getAd());
@@ -54,6 +57,23 @@ public class Main {
         System.out.println("Yazar Cinsiyet : " + yazar.getCinsiyet());
         System.out.println("Kitap Listesi : " + yazar.getKitap()[0]);
 
+        KiralamaRepository kiralamaRepository = new KiralamaRepository();
+        kiralamaRepository.save(kiralama1);
+        kiralamaRepository.save(kiralama2);
+        kiralamaRepository.save(kiralama3);
+        Kiralama[] kiralamalar = new Kiralama[3];
+        kiralamalar[0] = kiralama1;
+        kiralamalar[1] = kiralama2;
+        kiralamalar[2] = kiralama3;
+        System.out.println("--------------------------------------------------");
+        for (int i = 0; i < kiralamalar.length; i++) {
+            System.out.println(kiralamalar[i]);
+        }
+        System.out.println("--------------------------------------------------");
+
+        System.out.println(uye1.getAd() + " adli uye " + kitap.getAd() + " adli kitabi " + kiralama1.getKiralamaTarihi() + " tarihinde kiraladi.");
+        System.out.println(uye1.getAd() + " adli uye " + kitap1.getAd() + " adli kitabi " + kiralama2.getKiralamaTarihi() + " tarihinde kiraladi.");
+        System.out.println(uye1.getAd() + " adli uye " + kitap.getAd() + " adli kitabi " + kiralama3.getKiralamaTarihi() + " tarihinde kiraladi.");
 
 
 
