@@ -13,6 +13,7 @@ public class BaseEntity {
     public BaseEntity() {
         this.uuid = UUID.randomUUID();
         this.createdAt = System.currentTimeMillis();
+        this.updatedAt = System.currentTimeMillis();
         this.state = State.ACTIVE;
     }
 
